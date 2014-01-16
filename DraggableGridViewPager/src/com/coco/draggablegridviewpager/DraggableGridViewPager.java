@@ -56,7 +56,7 @@ import android.widget.Scroller;
  */
 public class DraggableGridViewPager extends ViewGroup {
 	private static final String TAG = "DraggableGridViewPager";
-	private static final boolean DEBUG = true;
+	private static final boolean DEBUG = false;
 	private static final boolean USE_CACHE = false;
 
 	private static void DEBUG_LOG(String msg) {
