@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+    <color name="cell_ordinary_h">#e52897d3</color>
+    <color name="cell_ordinary_m">#b215adff</color>
+    <color name="cell_ordinary_l">#7f15adff</color>
+    <color name="cell_special_h">#e5e05c1b</color>
+    <color name="cell_special_m">#b2ff5c0b</color>
+    <color name="cell_special_l">#7fff5c0b</color>
+    <color name="cell_ordinary_h_nigth">#e5000000</color>
+    <color name="cell_ordinary_m_night">#b2000000</color>
+    <color name="cell_ordinary_l_night">#7f000000</color>
+    <color name="cell_special_h_night">#e5d46630</color>
+    <color name="cell_special_m_night">#b2d46630</color>
+    <color name="cell_special_l_night">#7fd46630</color>
+
+</resources>
