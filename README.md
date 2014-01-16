@@ -6,7 +6,7 @@ Zaker style grid view pager, support dragging & rearrange, using as zaker's main
 Features
 ========
 
-+ Android SDK **level 4+**.
++ Android SDK **level 7+**.
 + Grid view layout split into pages.
 + Horizontally **swipe** pages like ViewPager in support-v4 library.
 + Long press to **dragging & rearrange** grid item.
