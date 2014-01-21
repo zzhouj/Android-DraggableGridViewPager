@@ -331,6 +331,10 @@ public class DraggableGridViewPager extends ViewGroup {
 		requestLayout();
 	}
 
+	public int getPageCount() {
+		return (getChildCount() + mPageSize - 1) / mPageSize;
+	}
+
 	@Override
 	protected void onLayout(boolean changed, int l, int t, int r, int b) {
 		final int childCount = getChildCount();
