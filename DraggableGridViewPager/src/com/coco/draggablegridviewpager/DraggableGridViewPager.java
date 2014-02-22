@@ -28,6 +28,8 @@ import java.util.ArrayList;
 import android.content.Context;
 import android.database.DataSetObserver;
 import android.graphics.Rect;
+import android.os.Parcel;
+import android.os.Parcelable;
 import android.support.v4.view.MotionEventCompat;
 import android.support.v4.view.VelocityTrackerCompat;
 import android.support.v4.view.ViewCompat;
@@ -353,6 +355,11 @@ public class DraggableGridViewPager extends ViewGroup {
 			DEBUG_LOG("child.layout position=" + i + ", rect=" + rect);
 			child.layout(rect.left, rect.top, rect.right, rect.bottom);
 			newPositions.add(-1);
+		}
+		if (mCurItem > 0 && mCurItem < mPageCount) {
+			final int curItem = mCurItem;
+			mCurItem = 0;
+			setCurrentItem(curItem);
 		}
 	}
 
@@ -1186,6 +1193,54 @@ public class DraggableGridViewPager extends ViewGroup {
 		} else if (edge == EDGE_RIGHT && mCurItem < mPageCount - 1) {
 			setCurrentItem(mCurItem + 1, true);
 		}
+	}
+
+	@Override
+	public void onRestoreInstanceState(Parcelable state) {
+		SavedState savedState = (SavedState) state;
+		super.onRestoreInstanceState(savedState.getSuperState());
+		mCurItem = savedState.curItem;
+		requestLayout();
+	}
+
+	@Override
+	public Parcelable onSaveInstanceState() {
+		Parcelable superState = super.onSaveInstanceState();
+		SavedState savedState = new SavedState(superState);
+		savedState.curItem = mCurItem;
+		return savedState;
+	}
+
+	static class SavedState extends BaseSavedState {
+		int curItem;
+
+		public SavedState(Parcelable superState) {
+			super(superState);
+		}
+
+		private SavedState(Parcel in) {
+			super(in);
+			curItem = in.readInt();
+		}
+
+		@Override
+		public void writeToParcel(Parcel dest, int flags) {
+			super.writeToParcel(dest, flags);
+			dest.writeInt(curItem);
+		}
+
+		@SuppressWarnings("UnusedDeclaration")
+		public static final Parcelable.Creator<SavedState> CREATOR = new Parcelable.Creator<SavedState>() {
+			@Override
+			public SavedState createFromParcel(Parcel in) {
+				return new SavedState(in);
+			}
+
+			@Override
+			public SavedState[] newArray(int size) {
+				return new SavedState[size];
+			}
+		};
 	}
 
 }
